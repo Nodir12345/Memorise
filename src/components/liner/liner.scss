@@ -1,0 +1,90 @@
+.boxm{
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+}
+.boxmusic{
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+.play{
+  border: 4px solid #12A7FB ;
+  padding: 10px;
+  border-radius: 50%;
+  filter: drop-shadow(2px 3px 4px #12A7FB) drop-shadow(-2px 3px 4px #12A7FB) drop-shadow(3px 2px 5px rgba(18, 167, 251, 0.5)) drop-shadow(-3px -2px 4px rgba(18, 167, 251, 0.5));
+  z-index: 11;
+
+}
+.leftmusic{
+  border: 2px solid #12A7FB ;
+border-top-left-radius: 50%;
+border-bottom-left-radius: 50%;
+position: absolute;
+left: 60px;
+  filter: drop-shadow(2px 3px 4px #12A7FB) drop-shadow(-2px 3px 4px #12A7FB) drop-shadow(3px 2px 5px rgba(18, 167, 251, 0.5)) drop-shadow(-3px -2px 4px rgba(18, 167, 251, 0.5));
+  border-right: inherit;
+}
+.rigthmusic{
+  border: 2px solid #12A7FB ;
+border-top-right-radius: 50%;
+border-bottom-right-radius: 50%;
+  position: absolute;
+  right: 60px;
+    filter: drop-shadow(2px 3px 4px #12A7FB) drop-shadow(-2px 3px 4px #12A7FB) drop-shadow(3px 2px 5px rgba(18, 167, 251, 0.5)) drop-shadow(-3px -2px 4px rgba(18, 167, 251, 0.5));
+    border-left: inherit;
+}
+.radius{
+  width: 300px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.89);
+  border: 5px solid #12A7FB;
+  border-radius: 50%;
+  filter: drop-shadow(2px 3px 4px #12A7FB) drop-shadow(-2px 3px 4px #12A7FB) drop-shadow(3px 2px 5px rgba(18, 167, 251, 0.5)) drop-shadow(-3px -2px 4px rgba(18, 167, 251, 0.5));
+  border-left: inherit;
+  position: absolute;
+   top: 520px;
+   left: 6px;
+   clip-path: circle(42.2% at 51% 100%);
+  >div{
+position: absolute;
+left: 130px;
+  }
+}
+.slider{
+  width: 230px;
+  margin: 0 auto;
+}
+.drop{
+  width: 100%;
+  height: 50px;
+  background-color: #000;
+position: absolute;
+bottom: 0;
+left: 0;
+}
+.buttontop{
+  width: 100px;
+  margin: 0 auto;
+  background-color: inherit;
+  position: absolute;
+  left: 110px;
+  
+}
+@media only screen and (max-height: 600px) {
+  .boxm{
+    background-color: #000;
+    position: absolute;
+    bottom:-30px ;
+    left: 0;
+    right: 0;
+  }
+  .radius{
+    bottom: -125px;
+  }
+}

@@ -1,0 +1,52 @@
+.aboutme1{
+  background-color: rgba(0, 0, 0, 0.833);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 300px;
+}
+.box1{
+  background-color: #1D2A41;
+  width: 320px;
+  padding: 40px;
+  margin:  auto;
+  position: relative;
+}
+.xx{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: red;
+  width: 25px;
+  height: 25px;
+  background-color:inherit ;
+  border: none;
+  cursor: pointer;
+}
+.home_text{
+  font-size: 17px;
+margin-bottom: 20px;
+}
+.left{
+  width: 324px;
+  background-color: rgba(0, 0, 0, 0.451);
+  padding: 10px;
+  position: relative;
+  height: 725px;
+  >h1{
+    color: #12A7FB;
+    font-size: 40px;
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    >span{
+      color: #fff;
+    }
+  }
+}
+.big{
+  display: flex;
+  justify-content: space-between;
+}
