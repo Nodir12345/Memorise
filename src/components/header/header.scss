@@ -31,11 +31,10 @@
     display: flex;
     width: 450px;
     align-items: center;
-    justify-content: space-between;
-    background-color: #362e2e;
     border-radius: 20px;
     padding: 20px 0;
     position: relative;
+    
   }
   > ul > li > ul > li > h3 {
     font-weight: 600;
@@ -59,6 +58,7 @@
     text-align: end;
   }
 }
+
 .about_box {
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
 }
 .space {
   width: 30px;
-  height: 165px;
+  height: 175px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: #12a7fb;

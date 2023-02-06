@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import React from "react";
 import "./register.css";
+import { Link } from "react-router-dom";
 import img from "../../img/eagle.png";
 import { useNavigate } from "react-router-dom";
 export const Register = () => {
@@ -28,6 +29,7 @@ export const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        localStorage.setItem("token", data.token)
         navigate("/")
       });
   };
@@ -43,8 +45,10 @@ export const Register = () => {
           <span className="my">my</span> memorise
         </h1>
         <div className="box_text">
-          <p className="text">LOGIN</p>
-          <p className="text">SIGN UP</p>
+
+          <Link to="/login" className="text">LOGIN</Link>
+
+          <Link to= "/register" className="text">REGISTER</Link>
         </div>
         <form className="form" onSubmit={(e) => change(e)}>
           <TextField

@@ -1,5 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import audio from "./audio/audio.m4a"
 import Slider from "@mui/material/Slider";
 import IconButton from "@mui/material/IconButton";
 import "./liner.scss";
@@ -15,6 +16,7 @@ export const Liner = () => {
   const [position, setPosition] = React.useState(32);
   const [paused, setPaused] = React.useState(false);
   const [down, setdown] = React.useState(true);
+
   return (
     
       <div>
@@ -53,7 +55,7 @@ export const Liner = () => {
             </IconButton>
           </div>
         </div>
-        <div className="slider">
+        {/* <div className="slider">
           <Slider
             aria-label="time-indicator"
             size="small"
@@ -63,7 +65,9 @@ export const Liner = () => {
             max={duration}
             onChange={(_, value) => setPosition(value)}
           />
-        </div>
+        </div> */}
+        <audio className="audio" src={audio}
+      controls></audio>
       </div>
     </Box>:
     <div className="drop">

@@ -1,10 +1,11 @@
-import React from 'react'
-import { Button } from '@mui/material'
+import React from "react";
+import { Button } from "@mui/material";
 export const Ui = () => {
   return (
     <>
-  <Button style={{color: "yellow"}} color='error' variant='outlined'>gshdjxs</Button>
-
+      <Button style={{ color: "yellow" }} color="error" variant="outlined">
+        gshdjxs
+      </Button>
     </>
-  )
-}
+  );
+};

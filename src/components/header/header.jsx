@@ -4,11 +4,41 @@ import TextField from "@mui/material/TextField";
 import { Button, Avatar, Checkbox, IconButton } from "@mui/material";
 import { FavoriteBorder, Favorite, Delete, Edit } from "@mui/icons-material";
 import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import img1 from "../../img/img.png";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import "./header.scss";
-export function Header({ data1 }) {
+
+export function Header({ data1, data,deleteMemory,edit }) {
   const [about, setabout] = React.useState(false);
+  const [refelesh, setRefelesh] = React.useState();
+
+  // React.useEffect(() => {
+  //   fetch("https://api.mymemories.uz/api/v1/memories/all", {
+  //     headers: {
+  //       Authorization: `Token ${localStorage.getItem("token")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         console.log(data);
+  //         setData(data.data);
+  //       }
+  //     });
+  // }, [refelesh]);
+
+  const deletemem = (id) => {
+    fetch(`https://api.mymemories.uz/api/v1/memories/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        deleteMemory()
+        setRefelesh(data);
+      });
+  };
 
   return (
     <div className="container2">
@@ -47,359 +77,59 @@ export function Header({ data1 }) {
       </div>
       <div className="about">
         <ul>
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
+          {data
+            ? data.map((el) => (
               
-            </div>
-          </li>
-          
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
+                <li className="aaa" key={el.id}>
+                  
+                  <div className="about_box">
+                    <div>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={el.files[0].url}
+                        sx={{ width: 56, height: 56 }}
+                      />
+                    </div>
+                    <div className="heart1">
+                      <Checkbox
+                        icon={<FavoriteBorder />}
+                        checkedIcon={<Favorite />}
+                      />
+                      <Checkbox
+                        icon={<HeartBrokenIcon />}
+                        checkedIcon={<FavoriteBorder />}
+                      />
+                    </div>
+                  </div>
+                  <ul>
+                    <li>
+                    {console.log(el.title.slice(0,7))}
+                      <h3>{el.title.length > 20 ? el.title.slice(0,20)+ "..." : el.title}</h3>
+                      <p>{el.desc.length > 25 ? el.desc.slice(0,25)+ "..." : el.desc}</p>
+                      <span>{el.created_at}</span>
+                    </li>
+                  </ul>
 
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
-
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
-
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
-
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
-
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
-
-          <li>
-            <div className="about_box">
-              <div>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={img1}
-                  sx={{ width: 56, height: 56 }}
-                />
-              </div>
-              <div className="heart1">
-                <Checkbox
-                  icon={<FavoriteBorder />}
-                  checkedIcon={<Favorite />}
-                />
-                <Checkbox
-                  icon={<HeartBrokenIcon />}
-                  checkedIcon={<FavoriteBorder />}
-                />
-              </div>
-            </div>
-            <ul>
-              <li>
-                <h3>Shamollarda qolgan...</h3>
-                <p>
-                  Urush boshlanadi. Charliz qurolli kuchlar majmuasiga xizmatga
-                  ketadi. Lekin jangda ishtirok...
-                </p>
-                <span>01/01/2023</span>
-              </li>
-            </ul>
-            <div className="space">
-              <IconButton aria-label="delete">
-                <Delete />
-              </IconButton>
-              <IconButton aria-label="delete">
-              <AddCircleOutlineIcon/>
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Edit />
-              </IconButton>
-              
-            </div>
-          </li>
+                  <div className="space">
+                    <IconButton
+                      onClick={() => deletemem(el.id)}
+                      aria-label="delete"
+                    >
+                      <Delete />
+                    </IconButton>
+                    <IconButton aria-label="delete">
+                      <AddCircleOutlineIcon  />
+                    </IconButton>
+                    <IconButton aria-label="delete"  onClick={() => edit(el)} >
+                      <Edit />
+                    </IconButton>
+                  </div>
+                </li>
+              ))
+            : <h1>xotira kiriting</h1>}
         </ul>
       </div>
+    
     </div>
   );
 }
