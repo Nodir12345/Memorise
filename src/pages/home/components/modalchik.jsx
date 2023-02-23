@@ -31,8 +31,10 @@ export const Modalchik = ({ values, setEditState, deleteMemory }) => {
     if (load.length === 0) {
       setload(values.files[0].id);
     }
-
+    console.log(load);
+    console.log(values);
     fetch("https://api.mymemories.uz/api/v1/memories", {
+      
       method: "PUT",
       headers: {
         "Authorization": `Token ${localStorage.getItem("token")}`
@@ -49,6 +51,7 @@ export const Modalchik = ({ values, setEditState, deleteMemory }) => {
         console.log(data);
         deleteMemory();
       });
+      
   };
 
   return (

@@ -31,7 +31,6 @@ export const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         if (data.success) {
           setData(data.data);
         }
@@ -77,7 +76,6 @@ export const Home = () => {
         }
       });
   };
-
   const submit = (e) => {
     e.preventDefault();
 
@@ -95,7 +93,7 @@ export const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         if (data.success) {
           fetch("https://api.mymemories.uz/api/v1/memories/all", {
             headers: {
@@ -128,7 +126,6 @@ export const Home = () => {
   };
 
   const edit = (el) => {
-    console.log(el);
     setEditState(el);
   };
 

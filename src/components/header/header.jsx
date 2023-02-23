@@ -103,7 +103,7 @@ export function Header({ data1, data,deleteMemory,edit }) {
                   </div>
                   <ul>
                     <li>
-                    {console.log(el.title.slice(0,7))}
+                    
                       <h3>{el.title.length > 20 ? el.title.slice(0,20)+ "..." : el.title}</h3>
                       <p>{el.desc.length > 25 ? el.desc.slice(0,25)+ "..." : el.desc}</p>
                       <span>{el.created_at}</span>
